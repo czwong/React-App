@@ -7,19 +7,19 @@ import './Navbar.css';
 import { IconContext } from 'react-icons';
 
 function Navbar() {
-  const [sideBara, setSidebara] = useState(false);
-  const showSidebara = () => setSidebar(!sideBara);
+  const [sideBar, setSidebar] = useState(false);
+  const showSidebar = () => setSidebar(!sideBar);
 
   return (
     <>
       <IconContext.Provider value={{ color: '#fff' }}>
         <div className='navbar'>
           <Link to='#' className='menu-bars'>
-            <FaIcons.FaBars onClick={showSidebara} />
+            <FaIcons.FaBars onClick={showSidebar} />
           </Link>
         </div>
-        <nav className={sideBara ? 'nav-menu active' : 'nav-menu'}>
-          <ul className='nav-menu-items' onClick={showSidebara}>
+        <nav className={sideBar ? 'nav-menu active' : 'nav-menu'}>
+          <ul className='nav-menu-items' onClick={showSidebar}>
             <li className='navbar-toggle'>
               <Link to='#' className='menu-bars'>
                 <AiIcons.AiOutlineClose />

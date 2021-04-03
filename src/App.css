@@ -7,9 +7,9 @@
   font-family: 'Lato', san-serif;
 }
 
-.home,
-.proxy,
-.settings {
+.Home,
+.Proxy,
+.Settings {
   display: flex;
   height: 90vh;
   align-items: center;
