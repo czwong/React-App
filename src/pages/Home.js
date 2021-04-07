@@ -4,33 +4,39 @@ import './Home.css';
 import * as BsIcons from 'react-icons/bs';
 
 function Home() {
-  const emailCount = 5;
+  const emailCount = document
+    .getElementById('group-area')
+    .value.split(/\r|\r\n|\n/).length;
   const [Task, setTask] = useState([]);
   const [Id, setId] = useState(0);
 
-  const incrementID = (ID) => {
-    setId(ID + 1);
-    return ID;
-  };
-
   const createTaskButton = () => {
-    const newTask = {
-      id: incrementID(Id),
-      start_icon: <BsIcons.BsPlayFill />,
-      stop_icon: <BsIcons.BsStopFill />,
-      delete_icon: <BsIcons.BsFillTrashFill />,
-      cName: 'task-bar',
-    };
+    const newTask = [];
+    var counter = 0;
 
-    const newTasks = [...Task, newTask];
+    for (let i = Id; i < Id + emailCount; i++) {
+      newTask.push({
+        id: i,
+        start_icon: <BsIcons.BsPlayFill />,
+        stop_icon: <BsIcons.BsStopFill />,
+        delete_icon: <BsIcons.BsFillTrashFill />,
+        cName: 'task-bar',
+      });
 
+      counter = i;
+    }
+
+    setId(counter + 1);
+    const newTasks = [...Task, ...newTask];
     setTask(newTasks);
   };
 
-  const deleteTaskButton = () => {
-    const deleteTasks = [];
+  const deleteTask = (i) => {
+    setTask(Task.filter((task) => task.id !== i));
+  };
 
-    setTask(deleteTasks);
+  const deleteTaskButton = () => {
+    setTask([]);
     setId(0);
   };
 
@@ -108,7 +114,7 @@ function Home() {
                   <span>Proxy</span>
                 </div>
                 <div className='task-box'>
-                  <p className='task-message'>
+                  <div className='task-message'>
                     <span>Create tasks to view</span>
                     {Task.map((item, index) => {
                       return (
@@ -116,11 +122,13 @@ function Home() {
                           <span>{item.id}</span>
                           <span>{item.start_icon}</span>
                           <span>{item.stop_icon}</span>
-                          <span>{item.delete_icon}</span>
+                          <span onClick={() => deleteTask(item.id)}>
+                            {item.delete_icon}
+                          </span>
                         </div>
                       );
                     })}
-                  </p>
+                  </div>
                 </div>
               </div>
             </div>
