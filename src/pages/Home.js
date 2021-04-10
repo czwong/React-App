@@ -4,13 +4,13 @@ import './Home.css';
 import * as BsIcons from 'react-icons/bs';
 
 function Home() {
-  const emailCount = document
-    .getElementById('group-area')
-    .value.split(/\r|\r\n|\n/).length;
   const [Task, setTask] = useState([]);
   const [Id, setId] = useState(0);
 
   const createTaskButton = () => {
+    const emailCount = document
+      .getElementById('group-area')
+      .value.split(/\r|\r\n|\n/).length;
     const newTask = [];
     var counter = 0;
 
@@ -42,9 +42,9 @@ function Home() {
 
   return (
     <>
-      <Container fluid id='container'>
+      <Container fluid>
         <Row>
-          <Col sm={3}>
+          <Col sm={4}>
             <div className='column1-content'>
               <div className='tcard'>
                 <textarea
@@ -66,13 +66,12 @@ function Home() {
               </div>
             </div>
           </Col>
-          <Col sm={3}>
+          <Col sm={8}>
             <div className='column2-content'>
-              <div className='scard'>
-                <h4>Select Proxy List</h4>
+              <div className='task-creation-row'>
                 <Dropdown>
                   <Dropdown.Toggle variant='success' id='dropdown-basic'>
-                    Proxy List
+                    Dropdown Button
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu>
@@ -85,17 +84,43 @@ function Home() {
                     </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
-                <div className='button-task' onClick={createTaskButton}>
+                <div
+                  className='button-creation-task'
+                  onClick={createTaskButton}
+                >
                   <span>Create Tasks</span>
                 </div>
-                <div className='button-task' onClick={deleteTaskButton}>
+                <div
+                  className='button-creation-task'
+                  onClick={deleteTaskButton}
+                >
                   <span>Delete Tasks</span>
                 </div>
               </div>
-            </div>
-          </Col>
-          <Col sm={6}>
-            <div className='column3-content'>
+              <div className='task-viewer'>
+                <div className='task-title'>
+                  <span>Task ID</span>
+                  <span>Proxy</span>
+                  <span>Email</span>
+                  <span>Status</span>
+                  <span></span>
+                </div>
+                <div className='task-box'>
+                  {Task.map((item, index) => {
+                    return (
+                      <div key={index} className={item.cName}>
+                        <span>{item.id}</span>
+                        {/* <div className='message_status'></div> */}
+                        <span>{item.start_icon}</span>
+                        <span>{item.stop_icon}</span>
+                        <span onClick={() => deleteTask(item.id)}>
+                          {item.delete_icon}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
               <div className='buttons-row'>
                 <div className='button' id='edit-btn'>
                   <span>Edit All Tasks</span>
@@ -105,30 +130,6 @@ function Home() {
                 </div>
                 <div className='button' id='delete-btn'>
                   <span>Stop All Tasks</span>
-                </div>
-              </div>
-              <div className='task-viewer'>
-                <div className='task-title'>
-                  <span>#</span>
-                  <span>Email</span>
-                  <span>Proxy</span>
-                </div>
-                <div className='task-box'>
-                  <div className='task-message'>
-                    <span>Create tasks to view</span>
-                    {Task.map((item, index) => {
-                      return (
-                        <div key={index} className={item.cName}>
-                          <span>{item.id}</span>
-                          <span>{item.start_icon}</span>
-                          <span>{item.stop_icon}</span>
-                          <span onClick={() => deleteTask(item.id)}>
-                            {item.delete_icon}
-                          </span>
-                        </div>
-                      );
-                    })}
-                  </div>
                 </div>
               </div>
             </div>
