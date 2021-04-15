@@ -69,10 +69,8 @@ function Home() {
           <Col sm={8}>
             <div className='column2-content'>
               <div className='task-creation-row'>
-                <Dropdown>
-                  <Dropdown.Toggle variant='success' id='dropdown-basic'>
-                    Dropdown Button
-                  </Dropdown.Toggle>
+                <Dropdown className='dropdown'>
+                  <Dropdown.Toggle>Proxy List</Dropdown.Toggle>
 
                   <Dropdown.Menu>
                     <Dropdown.Item href='#/action-1'>Action</Dropdown.Item>
@@ -84,17 +82,19 @@ function Home() {
                     </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
-                <div
-                  className='button-creation-task'
-                  onClick={createTaskButton}
-                >
-                  <span>Create Tasks</span>
-                </div>
-                <div
-                  className='button-creation-task'
-                  onClick={deleteTaskButton}
-                >
-                  <span>Delete Tasks</span>
+                <div className='button-task-pair'>
+                  <div
+                    className='button-creation-task'
+                    onClick={createTaskButton}
+                  >
+                    <span>Create Tasks</span>
+                  </div>
+                  <div
+                    className='button-creation-task'
+                    onClick={deleteTaskButton}
+                  >
+                    <span>Delete Tasks</span>
+                  </div>
                 </div>
               </div>
               <div className='task-viewer'>
