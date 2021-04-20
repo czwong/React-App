@@ -4,15 +4,16 @@ const path = require('path');
 function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    minWidth: 1024,
+    minHeight: 768,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
     },
   });
 
   // and load the index.html of the app.
-  mainWindow.loadURL('http://localhost:3000/');
+  mainWindow.loadURL('http://localhost:3000');
+  mainWindow.maximize();
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()

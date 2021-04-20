@@ -8,7 +8,7 @@ function Proxy() {
       <Container fluid>
         <Row>
           <Col sm={5}>
-            <div className='column1-content'>
+            <div className='proxy-content-1'>
               <h4>Enter Proxies</h4>
               <div className='tcard'>
                 <textarea
@@ -25,7 +25,7 @@ function Proxy() {
             </div>
           </Col>
           <Col sm={7}>
-            <div className='column2-content'>
+            <div className='proxy-content-2'>
               <h4>Proxy List</h4>
               <div className='proxy-list'>
                 <span>Task ID</span>

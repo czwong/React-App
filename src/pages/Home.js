@@ -1,16 +1,24 @@
 import React, { useState } from 'react';
-import { Container, Col, Row, Dropdown } from 'react-bootstrap';
+import { Container, Dropdown } from 'react-bootstrap';
 import './Home.css';
 import * as BsIcons from 'react-icons/bs';
+import {
+  MdControlPoint,
+  MdStop,
+  MdPlayArrow,
+  MdCreate,
+  MdDeleteSweep,
+} from 'react-icons/md';
 
 function Home() {
   const [Task, setTask] = useState([]);
   const [Id, setId] = useState(0);
 
   const createTaskButton = () => {
-    const emailCount = document
-      .getElementById('group-area')
-      .value.split(/\r|\r\n|\n/).length;
+    // const emailCount = document
+    //   .getElementById('group-area')
+    //   .value.split(/\r|\r\n|\n/).length;
+    const emailCount = 5;
     const newTask = [];
     var counter = 0;
 
@@ -43,98 +51,77 @@ function Home() {
   return (
     <>
       <Container fluid>
-        <Row>
-          <Col sm={4}>
-            <div className='column1-content'>
-              <div className='tcard'>
-                <textarea
-                  placeholder='Enter your emails...'
-                  id='group-area'
-                  autocomplete='off'
-                  autocapitalize='off'
-                  spellcheck='false'
-                  data-gramm_editor='false'
-                ></textarea>
-              </div>
-              <div className='buttons-row'>
-                <div className='button' id='save-btn'>
-                  <span>Save All</span>
-                </div>
-                <div className='button' id='delete-btn'>
-                  <span>Delete All</span>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col sm={8}>
-            <div className='column2-content'>
-              <div className='task-creation-row'>
-                <Dropdown className='dropdown'>
-                  <Dropdown.Toggle>Proxy List</Dropdown.Toggle>
+        <div className='home-content'>
+          <div className='task-row'>
+            <Dropdown className='dropdown'>
+              <Dropdown.Toggle>Proxy List</Dropdown.Toggle>
 
-                  <Dropdown.Menu>
-                    <Dropdown.Item href='#/action-1'>Action</Dropdown.Item>
-                    <Dropdown.Item href='#/action-2'>
-                      Another action
-                    </Dropdown.Item>
-                    <Dropdown.Item href='#/action-3'>
-                      Something else
-                    </Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-                <div className='button-task-pair'>
-                  <div
-                    className='button-creation-task'
-                    onClick={createTaskButton}
-                  >
-                    <span>Create Tasks</span>
-                  </div>
-                  <div
-                    className='button-creation-task'
-                    onClick={deleteTaskButton}
-                  >
-                    <span>Delete Tasks</span>
-                  </div>
-                </div>
+              <Dropdown.Menu>
+                <Dropdown.Item href='#/action-1'>Action</Dropdown.Item>
+                <Dropdown.Item href='#/action-2'>Another action</Dropdown.Item>
+                <Dropdown.Item href='#/action-3'>Something else</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+            <div className='buttons-row'>
+              <div
+                className='button'
+                id='create-btn'
+                onClick={createTaskButton}
+              >
+                <span>
+                  <MdControlPoint /> Create Tasks
+                </span>
               </div>
-              <div className='task-viewer'>
-                <div className='task-title'>
-                  <span>Task ID</span>
-                  <span>Proxy</span>
-                  <span>Email</span>
-                  <span>Status</span>
-                  <span></span>
-                </div>
-                <div className='task-box'>
-                  {Task.map((item, index) => {
-                    return (
-                      <div key={index} className={item.cName}>
-                        <span>{item.id}</span>
-                        {/* <div className='message_status'></div> */}
-                        <span>{item.start_icon}</span>
-                        <span>{item.stop_icon}</span>
-                        <span onClick={() => deleteTask(item.id)}>
-                          {item.delete_icon}
-                        </span>
-                      </div>
-                    );
-                  })}
-                </div>
+              <div className='button' id='edit-btn'>
+                <span>
+                  <MdCreate /> Edit All
+                </span>
               </div>
-              <div className='buttons-row'>
-                <div className='button' id='edit-btn'>
-                  <span>Edit All Tasks</span>
-                </div>
-                <div className='button' id='save-btn'>
-                  <span>Start All Tasks</span>
-                </div>
-                <div className='button' id='delete-btn'>
-                  <span>Stop All Tasks</span>
-                </div>
+              <div className='button' id='start-btn'>
+                <span>
+                  <MdPlayArrow /> Start All
+                </span>
+              </div>
+              <div className='button' id='stop-btn'>
+                <span>
+                  <MdStop /> Stop All
+                </span>
+              </div>
+              <div
+                className='button'
+                id='delete-btn'
+                onClick={deleteTaskButton}
+              >
+                <span>
+                  <MdDeleteSweep /> Delete Tasks
+                </span>
               </div>
             </div>
-          </Col>
-        </Row>
+          </div>
+          <div className='task-viewer'>
+            <div className='task-title'>
+              <span>ID</span>
+              <span>Proxy</span>
+              <span>Email</span>
+              <span>Status</span>
+              <span>Actions</span>
+            </div>
+            <div className='task-box'>
+              {Task.map((item, index) => {
+                return (
+                  <div key={index} className={item.cName}>
+                    <span>{item.id}</span>
+                    <span>{item.start_icon}</span>
+                    <span>{item.stop_icon}</span>
+                    <span onClick={() => deleteTask(item.id)}>
+                      {item.delete_icon}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
       </Container>
     </>
   );

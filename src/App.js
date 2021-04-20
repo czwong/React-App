@@ -6,7 +6,6 @@ import Proxy from './pages/Proxy.js';
 import Settings from './pages/Settings.js';
 import Logo from './components/Logo';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import { Container, Row, Col } from 'react-bootstrap';
 
 function App() {
   return (
