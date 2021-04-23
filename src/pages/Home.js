@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { Container, Dropdown } from 'react-bootstrap';
 import './Home.css';
 import * as BsIcons from 'react-icons/bs';
@@ -9,34 +9,34 @@ import {
   MdCreate,
   MdDeleteSweep,
 } from 'react-icons/md';
+import { emailContext } from '../components/Context';
 
 function Home() {
-  const [Task, setTask] = useState([]);
-  const [Id, setId] = useState(0);
+  console.log(emailContext);
+  const { email, Task, setTask, Id, setId } = useContext(emailContext);
 
   const createTaskButton = () => {
-    // const emailCount = document
-    //   .getElementById('group-area')
-    //   .value.split(/\r|\r\n|\n/).length;
-    const emailCount = 5;
+    const emailCount = email.length;
     const newTask = [];
     var counter = 0;
 
-    for (let i = Id; i < Id + emailCount; i++) {
-      newTask.push({
-        id: i,
-        start_icon: <BsIcons.BsPlayFill />,
-        stop_icon: <BsIcons.BsStopFill />,
-        delete_icon: <BsIcons.BsFillTrashFill />,
-        cName: 'task-bar',
-      });
+    if (emailCount > 0) {
+      for (let i = Id; i < Id + emailCount; i++) {
+        newTask.push({
+          id: i,
+          start_icon: <BsIcons.BsPlayFill />,
+          stop_icon: <BsIcons.BsStopFill />,
+          delete_icon: <BsIcons.BsFillTrashFill />,
+          cName: 'task-bar',
+        });
 
-      counter = i;
+        counter = i;
+      }
+
+      setId(counter + 1);
+      const newTasks = [...Task, ...newTask];
+      setTask(newTasks);
     }
-
-    setId(counter + 1);
-    const newTasks = [...Task, ...newTask];
-    setTask(newTasks);
   };
 
   const deleteTask = (i) => {

@@ -1,13 +1,13 @@
-import React, { useRef } from 'react';
+import React, { useRef, useContext } from 'react';
 import { Container, Row } from 'react-bootstrap';
+import { emailContext } from '../components/Context';
 import './Settings.css';
 
 function Settings() {
+  const { setEmail } = useContext(emailContext);
   const inputVal = useRef(null);
   const saveButton = () => {
-    localStorage.value = 200;
-    console.log(localStorage);
-    console.log(inputVal.current.value.split('\n'));
+    setEmail(inputVal.current.value.split('\n'));
   };
 
   return (
@@ -18,9 +18,9 @@ function Settings() {
             <textarea
               placeholder='Enter your emails...'
               id='group-area'
-              autocomplete='off'
-              autocapitalize='off'
-              spellcheck='false'
+              autoComplete='off'
+              autoCapitalize='off'
+              spellCheck='false'
               data-gramm_editor='false'
               ref={inputVal}
             ></textarea>

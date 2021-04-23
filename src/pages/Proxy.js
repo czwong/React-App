@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Container, Col, Row } from 'react-bootstrap';
 import './Proxy.css';
 
@@ -14,9 +14,9 @@ function Proxy() {
                 <textarea
                   placeholder='IP:Port:User:Pass'
                   id='group-area'
-                  autocomplete='off'
-                  autocapitalize='off'
-                  spellcheck='false'
+                  autoComplete='off'
+                  autoCapitalize='off'
+                  spellCheck='false'
                   data-gramm_editor='false'
                 ></textarea>
               </div>
