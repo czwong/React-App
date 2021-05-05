@@ -9,10 +9,9 @@ import {
   MdCreate,
   MdDeleteSweep,
 } from 'react-icons/md';
-import { emailContext } from '../components/Context';
+import { emailContext } from '../components/Context/EmailContext';
 
 function Home() {
-  console.log(emailContext);
   const { email, Task, setTask, Id, setId } = useContext(emailContext);
 
   const createTaskButton = () => {
@@ -34,8 +33,7 @@ function Home() {
       }
 
       setId(counter + 1);
-      const newTasks = [...Task, ...newTask];
-      setTask(newTasks);
+      setTask([...Task, ...newTask]);
     }
   };
 
@@ -98,28 +96,31 @@ function Home() {
               </div>
             </div>
           </div>
-          <div className='task-viewer'>
-            <div className='task-title'>
-              <span>ID</span>
-              <span>Proxy</span>
-              <span>Email</span>
-              <span>Status</span>
-              <span>Actions</span>
-            </div>
-            <div className='task-box'>
-              {Task.map((item, index) => {
-                return (
-                  <div key={index} className={item.cName}>
-                    <span>{item.id}</span>
+          <div className='task-title'>
+            <span>ID</span>
+            <span>Proxy</span>
+            <span>Email</span>
+            <span>Status</span>
+            <span>Actions</span>
+          </div>
+          <div className='task-box'>
+            {Task.map((item, index) => {
+              return (
+                <div key={index} className={item.cName}>
+                  <span>{item.id}</span>
+                  <span>proxy</span>
+                  <span>email</span>
+                  <span>status</span>
+                  <div className='action-buttons'>
                     <span>{item.start_icon}</span>
                     <span>{item.stop_icon}</span>
                     <span onClick={() => deleteTask(item.id)}>
                       {item.delete_icon}
                     </span>
                   </div>
-                );
-              })}
-            </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </Container>

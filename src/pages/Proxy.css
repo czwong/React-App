@@ -1,4 +1,4 @@
-h4 {
+h5 {
   color: white;
   text-align: center;
 }
@@ -8,13 +8,80 @@ h6 {
   color: white;
 }
 
+.proxy-content-1 {
+  width: 100%;
+  height: 100%;
+  padding-left: 100px;
+}
+
+.proxy-content-2 {
+  width: 100%;
+  padding-left: 50px;
+  padding-right: 100px;
+}
+
+.rcard {
+  align-items: center;
+  height: 78vh;
+}
+
+#group-area-1 {
+  background-color: #151725;
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  color: white;
+  font-size: 18px;
+  padding: 10px;
+  text-align: center;
+}
+
+.proxy-name {
+  display: flex;
+}
+
+#proxy-save-btn {
+  color: green;
+  box-shadow: 0 0 1pt 1pt green;
+  font-weight: 900;
+  flex: 30%;
+  margin: 0px 15px;
+}
+
+#proxy-save-btn:hover {
+  color: white;
+  background-color: green;
+  box-shadow: 0 0 1pt 1pt white;
+}
+
+#proxy-remove-btn {
+  color: red;
+  box-shadow: 0 0 1pt 1pt red;
+  font-weight: 900;
+  flex: 30%;
+}
+
+#proxy-remove-btn:hover {
+  color: white;
+  background-color: red;
+  box-shadow: 0 0 1pt 1pt white;
+}
+
+#proxy-list-name {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid white;
+  color: white;
+  flex: 40%;
+}
+
 .proxy-list {
   background-color: #202335;
   width: 100%;
   height: 100%;
-  margin: 10px 0px;
   color: #fff;
-  font-size: 22px;
+  font-size: 18px;
   align-items: center;
   display: flex;
   color: #fff;
@@ -24,14 +91,26 @@ h6 {
   align-items: center;
 }
 
-.column1-content {
-  width: 100%;
-  height: 100%;
-  padding-left: 100px;
+.proxy-group {
+  background-color: #202335;
+  display: flex;
+  color: #fff;
+  font-size: 18px;
+  border: 2px solid black;
+  border-radius: 12px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  align-items: center;
+  margin-bottom: 4px;
 }
 
-.column2-content {
-  width: 100%;
-  padding-left: 50px;
-  padding-right: 100px;
+.proxy-group > span:nth-child(1) {
+  flex: 50%;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+.proxy-group > span:nth-child(2) {
+  flex: 50%;
+  text-align: center;
+  overflow-x: hidden;
 }

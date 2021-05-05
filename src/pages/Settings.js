@@ -1,6 +1,6 @@
 import React, { useRef, useContext } from 'react';
 import { Container, Row } from 'react-bootstrap';
-import { emailContext } from '../components/Context';
+import { emailContext } from '../components/Context/EmailContext';
 import './Settings.css';
 
 function Settings() {
@@ -17,7 +17,7 @@ function Settings() {
           <div className='tcard'>
             <textarea
               placeholder='Enter your emails...'
-              id='group-area'
+              id='group-area-2'
               autoComplete='off'
               autoCapitalize='off'
               spellCheck='false'

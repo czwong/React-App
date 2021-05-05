@@ -6,7 +6,8 @@ import Home from './pages/Home.js';
 import Proxy from './pages/Proxy.js';
 import Settings from './pages/Settings.js';
 // import Logo from './components/Logo';
-import { emailContext } from './components/Context';
+import { emailContext } from './components/Context/EmailContext';
+import { ProxyContextProvider } from './components/Context/ProxyContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -24,15 +25,17 @@ function App() {
             <Sidebar />
           </div>
           <div className='content'>
-            <emailContext.Provider
-              value={{ email, setEmail, Task, setTask, Id, setId }}
-            >
-              <Switch>
-                <Route path='/' exact component={Home} />
-                <Route path='/Proxy' component={Proxy} />
-                <Route path='/Settings' component={Settings} />
-              </Switch>
-            </emailContext.Provider>
+            <ProxyContextProvider>
+              <emailContext.Provider
+                value={{ email, setEmail, Task, setTask, Id, setId }}
+              >
+                <Switch>
+                  <Route path='/' exact component={Home} />
+                  <Route path='/Proxy' component={Proxy} />
+                  <Route path='/Settings' component={Settings} />
+                </Switch>
+              </emailContext.Provider>
+            </ProxyContextProvider>
           </div>
         </div>
       </Router>
