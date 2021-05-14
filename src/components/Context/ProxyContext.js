@@ -2,16 +2,19 @@ import { useState, useContext, createContext } from 'react';
 
 const ProxyContext = createContext(null);
 
-export function useProxyList() {
+export function useProxyGroup() {
   return useContext(ProxyContext);
 }
 
 export function ProxyContextProvider({ children }) {
-  const [ProxyList, setProxyList] = useState([]);
+  const retrieveProxy = JSON.parse(localStorage.getItem('Proxy'));
+  const [ProxyGroup, setProxyGroup] = useState(
+    retrieveProxy == null ? [] : retrieveProxy
+  );
 
   return (
     <>
-      <ProxyContext.Provider value={{ ProxyList, setProxyList }}>
+      <ProxyContext.Provider value={{ ProxyGroup, setProxyGroup }}>
         {children}
       </ProxyContext.Provider>
     </>

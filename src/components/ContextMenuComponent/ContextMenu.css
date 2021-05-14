@@ -1,0 +1,28 @@
+.context-menu {
+  position: fixed;
+  background-color: grey;
+  width: 100px;
+  z-index: 10;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.context-menu-list {
+  display: flex;
+  font-size: 16px;
+  color: white;
+}
+
+.context-menu-list:hover {
+  background-color: hotpink;
+  cursor: pointer;
+}
+
+.context-menu-list > span:nth-child(1) {
+  flex: 30%;
+  text-align: center;
+}
+
+.context-menu-list > span:nth-child(2) {
+  flex: 70%;
+}

@@ -7,7 +7,9 @@ function Settings() {
   const { setEmail } = useContext(emailContext);
   const inputVal = useRef(null);
   const saveButton = () => {
-    setEmail(inputVal.current.value.split('\n'));
+    setEmail(
+      inputVal.current.value.split('\n').filter((email) => email !== '')
+    );
   };
 
   return (

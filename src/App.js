@@ -5,9 +5,9 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './pages/Home.js';
 import Proxy from './pages/Proxy.js';
 import Settings from './pages/Settings.js';
-// import Logo from './components/Logo';
 import { emailContext } from './components/Context/EmailContext';
 import { ProxyContextProvider } from './components/Context/ProxyContext';
+import { ContextMenuProvider } from './components/Context/ContextMenuContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -29,11 +29,13 @@ function App() {
               <emailContext.Provider
                 value={{ email, setEmail, Task, setTask, Id, setId }}
               >
-                <Switch>
-                  <Route path='/' exact component={Home} />
-                  <Route path='/Proxy' component={Proxy} />
-                  <Route path='/Settings' component={Settings} />
-                </Switch>
+                <ContextMenuProvider>
+                  <Switch>
+                    <Route path='/' exact component={Home} />
+                    <Route path='/Proxy' component={Proxy} />
+                    <Route path='/Settings' component={Settings} />
+                  </Switch>
+                </ContextMenuProvider>
               </emailContext.Provider>
             </ProxyContextProvider>
           </div>

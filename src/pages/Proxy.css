@@ -16,6 +16,7 @@ h6 {
 
 .proxy-content-2 {
   width: 100%;
+  height: 100%;
   padding-left: 50px;
   padding-right: 100px;
 }
@@ -26,7 +27,7 @@ h6 {
 }
 
 #group-area-1 {
-  background-color: #151725;
+  background-color: #202335;
   border-radius: 6px;
   width: 100%;
   height: 100%;
@@ -34,6 +35,7 @@ h6 {
   font-size: 18px;
   padding: 10px;
   text-align: center;
+  resize: none;
 }
 
 .proxy-name {
@@ -76,19 +78,30 @@ h6 {
   flex: 40%;
 }
 
-.proxy-list {
-  background-color: #202335;
+.proxy-title {
   width: 100%;
-  height: 100%;
   color: #fff;
   font-size: 18px;
   align-items: center;
   display: flex;
   color: #fff;
-  border: 2px solid black;
-  border-radius: 12px;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  align-items: center;
+  border-bottom: 2px solid white;
+  margin-bottom: 15px;
+}
+
+.proxy-title > span:nth-child(1) {
+  flex: 50%;
+  text-align: center;
+}
+
+.proxy-title > span:nth-child(2) {
+  flex: 50%;
+  text-align: center;
+}
+
+.proxy-group-area {
+  height: 78vh;
+  overflow-y: auto;
 }
 
 .proxy-group {
@@ -97,10 +110,15 @@ h6 {
   color: #fff;
   font-size: 18px;
   border: 2px solid black;
-  border-radius: 12px;
+  border-radius: 8px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   align-items: center;
   margin-bottom: 4px;
+  cursor: pointer;
+}
+
+.proxy-group:hover {
+  border-color: white;
 }
 
 .proxy-group > span:nth-child(1) {
